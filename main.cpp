@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+#inclide <Mummy.h>
 
 int main(){
 
