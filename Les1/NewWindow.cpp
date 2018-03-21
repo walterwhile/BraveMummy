@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // settings
 
-  glutInitWindowSize(1024, 768);
+  glutInitWindowSize(1024, 1024);
   glutInitWindowPosition(100, 100);
   glutCreateWindow("Les1.Window"); // creation of window
 
