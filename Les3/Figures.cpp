@@ -2,40 +2,49 @@
 
 double size = 0.7;
 
-GLvoid DrawGLScene(GLvoid)
+GLvoid display(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
+        glLoadIdentity();
 
-  	glBegin(GL_TRIANGLES);
-		glVertex2d(-size*0.866, -size*0.5);
-		glVertex2d(size*0.866, -size*0.5);
-		glVertex2d(0, size);
-	glEnd();
+        glTranslatef(-1.5f,0.0f,-6.0f);
 
-	glTranslatef(3.0f,0.0f,0.0f);           // Сдвинем вправо на 3 единицы
+        glBegin(GL_TRIANGLES);
+		glColor3f(1.0f,0.0f,0.0f);      // Красный цвет
+                glVertex3f( 0.0f, 1.0f, 0.0f);
+		glColor3f(0.0f,1.0f,0.0f);      // Зеленный цвет
+                glVertex3f(-1.0f,-1.0f, 0.0f);
+		glColor3f(0.0f,0.0f,1.0f);      // Синий цвет
+                glVertex3f( 1.0f,-1.0f, 0.0f);
+        glEnd();
 
-	glBegin(GL_QUADS);
-                glVertex3f(-1.0f, 1.0f, 0.0f);  // Слева вверху
-                glVertex3f( 1.0f, 1.0f, 0.0f);  // Справа вверху
-                glVertex3f( 1.0f,-1.0f, 0.0f);  // Справа внизу
-                glVertex3f(-1.0f,-1.0f, 0.0f);  // Слева внизу
+        glTranslatef(3.0f,0.0f,0.0f);
+
+	glColor3f(0.5f,0.5f,1.0f);      // Установим синий цвет только один раз
+        glBegin(GL_QUADS);
+                glVertex3f(-1.0f, 1.0f, 0.0f);
+                glVertex3f( 1.0f, 1.0f, 0.0f);
+                glVertex3f( 1.0f,-1.0f, 0.0f);
+                glVertex3f(-1.0f,-1.0f, 0.0f);
         glEnd();
 
 	glutSwapBuffers();
-	glutPostRedisplay(); 
 }
 
 int main(int argc, char **argv)
 {
-  glutInit(&argc, argv); // GLUT inicialization
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // settings
-  glutCreateWindow("Les3.Polygon"); // creation of window
+	glutInit(&argc, argv); // GLUT inicialization
 
-  glutDisplayFunc(DrawGLScene);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // settings
 
-  glutMainLoop(); // giving control to GLUT
+	glutInitWindowSize(512, 512);
+	glutInitWindowPosition(100, 100);
+	glutCreateWindow("glut"); // creation of window
 
-  return 0;
+	glutDisplayFunc(display);
+
+	glutMainLoop(); // giving control to GLUT
+
+	return 0;
 }
 
